@@ -17,8 +17,8 @@ $ ssh -T git@github.com
 ### git usage commands
 ```bash
 # Configure the author name and email address to be used with your commits.
-$ git config --global user.name "Sam Smith"
-$ git config --global user.email sam@example.com
+$ git config --global user.name "Mew Mew"
+$ git config --global user.email mew@example.com
 
 # initiate git in the current directory
 $ git init
