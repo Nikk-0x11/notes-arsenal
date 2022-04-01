@@ -1,3 +1,0 @@
-- Intermidate CodeChef
-- Greedy Algorithm
-- DP (Dynamic Programming)
