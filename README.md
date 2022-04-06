@@ -1,8 +1,10 @@
-# notes-arsenal
- An arsenal of all my notes
- 
- ## A Note for you if you'll go thorugh the stuff.
- - All the theory that exist here is copy pasted from diff places websites, forums, tutorials and blogs about diff topics for ez reference and is for the sake of university or my own personal learning.
- - They are just notes that makes no sense.
- - I am saving my notes here cuz I can't carry notebooks everywhere I go.
- - Welp I'll keep writeups of CTFs and boxes here, also some of the guides. that might come handy to someone ig.?
+# My notes ~~storage~~ arsenal 
+ ### A repo with all of my notes...
+
+- **CTFs** -> files and solution of CTF challenges that I solved recently.
+- **compe_programming** -> competitive problems answer.
+- **DSA** -> DSA notes
+- **guides** -> guides on different stuff.
+- **langs** -> programming languages reference notes.
+
+> Am too lazy and can't google stuff again and again so I just copy/paste them into a file and dump them here with some add-ons and easy to understand explanation. :D
