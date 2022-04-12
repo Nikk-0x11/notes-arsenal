@@ -1,79 +1,64 @@
 # Asymptotic Analysis
+**Data Structure**
 
-**Topics Covered**
+→ In order to use data efficiently we have to store it efficiently. Efficiency of a data structure is always measured in terms of **SPACE** and **TIME.
 
-- Asymptotic Notation
-- Big-O Notation
-- Theta Notation
-- Omega Notation
+→ An Ideal data structure could be the one that takes the least possible time for all its operations and consumes the least memory space.
 
-The efficiency of an algorithm depends on the current amount of time, storage, and other resources required to execute the algorithm. **The efficiency is measured with the help of asymptotic notation.**
+→ Our main focus will be on the time complexity and not the space complexity.
 
-An algorithm may not have the same performance for different types of inputs. With the increase in the input size, the performance will change.
+**Q. On what basis, we could compare the time complexity of the data structures.**
 
-The study of change in performance of the algorithm with the change in the order of the input size is defined as asymptotic analysis.
+→ On the basis of operations performed on them.
 
-**Asymptotic Notations**
+**Q. How to find the time complexity.**
 
-Asymptotic analysis is **the process of calculating the running time of an algorithm in mathematical units to find the program's limitations, or “run-time performance.”** The goal is to determine the best case, worst case, and average-case time required to execute a given task.
+-   Examine exact running time.
+    
+    -   Pick some machine and turn the timer on. Run the operation for different inputs on the data structures you want to compare on by one and see how much time a particular operation will take based on the data structures.
+    -   It is possible for a data structure that for some input size, first data structure give the best performance and for the other the second data structure performs better.
+    
+    **Examining the exact running time is not the best solution to calculate the time complexity.**
+    
+    **Point Notes**
+    
+    → Measuring the actual running time is not practical at all. 
+	→ The running time generally depends on the input size. 
+	→ The size of input is a `n` then `f(n)` is the function of `n` denotes the time complexity. 
+	→ `f(n)` represents the number of instructions executed for the input value of `n`.
+    
 
-For example:- In the **bubble sort algorithm**, when the input array is already sorted, the time taken by the algorithm is linear.
+### finding `f(n)`
 
-When the input array is neither sorted nor in reverse order, then it takes average time. These durations are denoted using asymptotic notations:
+We can compare two data structures for a particular operation by comparing their `f(n)` values.
 
-- Big-O Notation
-- Omega Notation
-- Theta Notation
+We are interested in finding the growth rate of `f(n)` with respect to `n` because it might be possible that for smaller input size, one data structure may seem better than the other but for larger input size it may not.
 
-### **Big-O notation**
+The concept is applicable in comparing the two algorithms as well.
 
-Big-O notations is a mathematical notation that described the limiting behavior of a function when the argument tends toward a particular value or infinity.
+### Big O Notation
 
-![Big-O gives the upper bound of a function](images/Asymptotic%200a212/Untitled.png)
+Big O Notation is used to measure the performance of any algorithm by providing the order of growth of the function or how a function grows.
 
-Big-O gives the upper bound of a function
+It gives the upper bound on a function by which we can make sure that the function will never grow faster than this upper bound.
 
-```
-O(g(n)) = { f(n): there exist positive constants c and n0
-            such that 0 ≤ f(n) ≤ cg(n) for all n ≥ n0 }
-```
+We want the approximate runtime of he operations performed on data structure.
 
-The above expression can be described as a function `f(n)` belongs to the set `0(g(n))` if there exists a positive constant `c` such that it lies between `0` and `cg(n)`, for sufficiently large `n`
+We are no interested in the exact time.
 
-Since it gives the worst-case running time of an algorithm, it is widely used to analyze an algorithm as we are always interested in the worst-case scenario.
+Big O Notation will help us to achieve the same.
 
-### Omega Notation (**Ω-notation)**
+-   It gives us the exact runtime. It gives us the order of growth of the function. The least upper bound of function so that we know that function will never grow faster than the upper bound.
 
-Omega notation represents the lower bound of the running time of an algorithm. Thus, it provides the best case complexity of an algorithm.
+**Formal definition of Big O Notation**
 
-![Omega gives the lower bound of a function](images/Asymptotic%200a212/Untitled%201.png)
+If `f(n)` and `g(n)` are the two function, then
 
-Omega gives the lower bound of a function
+$f(n) = O(g(n))$
 
-```
-Ω(g(n)) = { f(n): there exist positive constants c and n0 
-            such that 0 ≤ cg(n) ≤ f(n) for all n ≥ n0 }
-```
+This simply means that `f(n)` does not grow faster than `g(n)`
 
-The above expression can be described as a function `f(n)` belongs to the set `Ω(g(n))` if there exists a positive constant `c` such that it lies above `cg(n)`, for sufficiently large `n`.
 
-For any value of `n`, the minimum time required by the algorithm is given by Omega `Ω(g(n))`.
+If there exists constants `c` and ${n}_{0}$, such that:
 
-### Theta Notation (**Θ-notation)**
-
-Theta notation encloses the function from above and below. Since it represents the upper and the lower bound of the running time of an algorithm, it is used for analyzing the average-case complexity of an algorithm.
-
-![Theta bounds the function within constraints factors](images/Asymptotic%200a212/Untitled%202.png)
-
-Theta bounds the function within constraints factors
-
-For a function `g(n)`, `Θ(g(n))` is given by the relation:
-
-```
-Θ(g(n)) = { f(n): there exist positive constants c1, c2 and n0
-            such that 0 ≤ c1g(n) ≤ f(n) ≤ c2g(n) for all n ≥ n0 }
-```
-
-The above expression can be described as a function `f(n)` belongs to the set `Θ(g(n))` if there exist positive constants `c1` and `c2` such that it can be sandwiched between `c1g(n)` and `c2g(n)`, for sufficiently large `n`.
-
-If a function `f(n)`  lies anywhere in between `c1g(n)`  and `c2g(n)`  for all `n ≥ n0`  then `f(n)` is said to be asymptotically tight bound.
+$f(n) = c.g(n)$ for all $n \ge {n}_{0}$
