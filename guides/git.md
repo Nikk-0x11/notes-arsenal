@@ -44,6 +44,12 @@ $ git commit -m "commit message"
 # push changes to the branch
 $ git push -u origin main
 
+# to a add a new remote: 
+$ git remote add origin git@github.com:User/UserRepo.git 
+
+# change the url of an existing remote repository: 
+$ git remote set-url origin git@github.com:User/UserRepo.git
+
 # push changes to Github
 $ git push
 
