@@ -6,5 +6,6 @@
 - **DSA** -> DSA notes
 - **guides** -> guides on different stuff.
 - **langs** -> programming languages reference notes.
+- **random programs** -> randomly coded scripts?
 
 > Am too lazy and can't google stuff again and again so I just copy/paste them into a file and dump them here with some add-ons and easy to understand explanation. :D
