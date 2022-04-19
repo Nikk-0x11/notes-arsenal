@@ -5,8 +5,8 @@
 
 ### File Structure
 ```
-./assets/ <br>
-./assets/images/ <br>
-./assets/notes/ <br>
-./assets/programs/ <br>
+./assets/
+./assets/images/
+./assets/notes/
+./assets/programs/
 ```
