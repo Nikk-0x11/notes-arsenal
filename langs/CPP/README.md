@@ -4,7 +4,7 @@
 
 
 ### File Structure
-./assets/
-./assets/images/
-./assets/notes/
-./assets/programs/
+./assets/ <br>
+./assets/images/ <br>
+./assets/notes/ <br>
+./assets/programs/ <br>
