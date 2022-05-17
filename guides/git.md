@@ -70,4 +70,42 @@ $ git merge <branchname>
 
 # check commit logs
 $ git log
+
+# the soft reset won’t alter the working directory and the index
+
+# going back to HEAD
+$ git reset --hard HEAD
+
+# going back to commit before HEAD
+$ git reset --hard HEAD^
+
+# equivalent to "^"
+$ git reset --hard HEAD~1
+
+# going back two commits before HEAD
+$ git reset --hard HEAD~2
+
+# undoing hard reset
+$ git reset --hard HEAD@{1}
+
+
+# git commnds that can help resolve merge conflicts
+
+## general
+$ git status
+
+$ git log --merge
+
+$ git diff
+
+# when git fails to start a merge
+$ git checkout 
+
+$ git reset --mixed
+
+# when git conflicts arise during a merge
+
+$ git merge --abort
+
+$ git reset
 ```
