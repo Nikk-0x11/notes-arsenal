@@ -14,6 +14,21 @@ $ ssh -T git@github.com
 > Hi {username}! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
+### setup `meld` as git difftool & mergetool
+```bash
+$ git config --global diff.tool meld
+
+$ git config --global difftool.meld.path "/usr/bin/meld"
+
+$ git config --global difftool.prompt false
+
+$ git config --global merge.tool meld
+
+$ git config --global mergetool.meld.path "/usr/bin/meld"
+
+$ git config --global mergetool.prompt false
+```
+
 ### git usage commands
 ```bash
 # Configure the author name and email address to be used with your commits.
