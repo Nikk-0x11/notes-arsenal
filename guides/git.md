@@ -51,6 +51,8 @@ $ git add .
 $ git status
 
 # change branch to main
+$ git branch --move bad_branch_name corrected_branch_name
+
 $ git branch -M main
 
 # enter a commit message
