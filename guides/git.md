@@ -87,9 +87,15 @@ $ git merge <branchname>
 
 # check commit logs
 $ git log
+```
+#### the soft reset won’t alter the working directory and the index
+#### git reset --soft, which will keep your files, and stage all changes back automatically.
 
-# the soft reset won’t alter the working directory and the index
+#### git reset --hard, which will completely destroy any changes and remove them from the local directory. Only use this if you know what you’re doing.
 
+#### git reset --mixed, which is the default, and keeps all files the same but unstages the changes. This is the most flexible option, but despite the name, it doesn’t modify files.
+
+```bash
 # going back to HEAD
 $ git reset --hard HEAD
 
