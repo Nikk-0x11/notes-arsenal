@@ -43,5 +43,94 @@ This is a simple "hello, world!" program in C++. The line `#include <iostream>` 
 The `std::` specifies that the name `cout` is to be found in the standard-library namespace. alternatively we can use `using namespace std;` this will make things a bit easier and we don't have to type `std::` anymore just simple `cout << "hello, world!"`.
 
 ---
-### Types, Variables, and Airthmetic
+### Types, Variables, and Airthmetic [May, 18, 2022]
 
+Every name and every expression has a type that determines the operation that may be performed on it. example: declaration of variables.
+
+```cpp
+int some_variable;
+```
+
+this specifies that `some_variable` is of type `int`; that is, `some_variable` is an integer.
+
+A declaration is a statement that introduces a name into the program. It specifies a type for the named entity:
+- A type defines a set of possible value and a set of operations for an object.
+- An object is some memory that holds a value of soem type.
+- A value is a set of bits interpreted according to a type.
+- A variable is a named object.
+
+C++ have a variety of fundamental types. example:
+```cpp
+bool    // boolean, possible values are true and false
+char    // character, example: 'a', 'b' and '7'
+int     // integer, example: 1, 2, 17 and 1024
+double  // double-precision floating-point number, example: 3.14 and 1234.0
+```
+
+Each fundamental type corresponds directly to hardware facilities and has a fixed size that determines the range of values that can be stored in it. A `char` variable is of the natural size to hold a character on a given machine (8-bit byte) and the sizes of the other types are quoted in multiples of the size of a `char`. The size of the type is implementation-defines (i.e. it can vary among different machines) and can be obtained by the `sizeof` operator. example: `sizeof(char)` equals `1` and `sizeof(int)` equals `4`.
+
+The arithmetic operators can be used for appropriate combinations of these types:
+
+```cpp
+x+y   // plus
++x    // unary plus
+x-y   // minus
+-x    // unary minus
+x*y   // multiply
+x/y   // divide
+x%y   // remainder (modulus) for integers
+
+// comparison operators
+
+x==y  // equal
+x!=y  // not equal
+x<y   // less than
+x>y   // greater than
+x<=y  // less than or equal
+x>=y  // greater than or equal
+```
+
+In assignments and in arithmetic operations, C++ performs all meaningful conversions between the basic types so that they can be mixed freely:
+
+```cpp
+void random_func() // function that doesn't return a value
+{
+  double d = 2.2; // initialize floating-point number
+  int i = 7;      // initialize integer
+  d = d + i;      // assign sum to d
+  i = d * i;      // assign product to i
+}
+```
+
+Note that `=` is the assignment operator and `==` tests equality.
+
+When defining a variable, we don't actually need to state its type explicitly when it can be deduced from the initializer:
+```cpp
+auto b = true;    // a bool
+auto ch = 'x';    // a char
+auto i = 123;     // an int
+auto d = 1.2;     // a double
+auto z = sqrt(y); // z has the type of whatever sqrt(y) retruns
+```
+
+With `auto` we use the `=` syntax because there is no type conversion involved that might cause problems. We ise `auto` when we don't have a specific reason to mention the type explicitly. "specific reasons" included:
+
+- The definition is in a large scope where we want to make the type clearly visible to reader of our code.
+- We want to be explicit about a variable's range or precision. example: `double` rather than `float`.
+
+using `auto` we avoid redundancy and writing long type names. This is especially important in generic programming where the exact type of an object can be hard for the programmer to know and the type names can be quite long.
+
+In addition to thie conventional arithmetic and logical operators. C++ offers more specific operations for modifying a variable:
+
+```cpp
+x+=y    // x = x+y
+++x     // increment x = x+1
+x-=y    // x = x-y
+--x     // decrement x = x-1
+x*=y    // scaling x = x*y
+x/=y    // scaling x = x/y
+x%=y    // x = x%y
+```
+
+---
+### Constants
