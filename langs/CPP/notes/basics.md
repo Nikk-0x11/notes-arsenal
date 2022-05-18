@@ -164,3 +164,76 @@ In a few places, constant expressions are required by language rules, array bond
 
 ---
 ### Tests and Loops
+
+C++ provides a conventional set of statements for expressing selection and looping. example: a simple function that prompts the user and returns a Boolean indicating the response.
+
+```cpp
+bool accept()
+{
+  cout << "do you want to proceed (y or n)?\n";   // print question for user
+
+  char answer = 0
+  cin >> answer;                                  // read answer from user
+
+  if (answer == "y") return true;
+  return false;
+}
+```
+
+To match the `<<` output operator ("put to") the `>>` operator ("get from") is used for input; `cin` is the standard input stream. The type of the right-hand operator of `>>` determines what input is accepted, and its right-hand operand is the target of the input operation. The `\n` character at the end of the output string represents a newline.
+
+above example can be improved by taking a `n` for "no" answer:
+
+```cpp
+bool accept2()
+{
+  cout << "do you want to proceed (y or n)?\n";   // print question for user
+
+  char answer = 0;
+  cin >> answer;                                  // read answer from user
+
+  switch (answer)
+  {
+    case 'y':
+      return true;
+    case 'n':
+      return false;
+    default:
+      cout << "I'll take that for a no.\n";
+      return false;
+  }
+}
+```
+
+A `switch-statement` tests a value agains a set of constants. The case constants must be distinct and if the value tested does not match any of them the `default` is chosen. If no `default` is provided, no action is taken if the value doesn't match any case constant.
+
+Few programs are written without loops. example: we might like to give the user a few tries to produce acceptable input:
+
+```cpp
+bool accept3()
+{
+  int tries = 1;
+  while (tries < 4)
+  {
+  cout << "do you want to proceed (y or n)?\n";
+
+  char answer = 0;
+  cin >> answer;
+
+    switch (answer)
+    {
+    case 'y':
+      return true;
+    case 'n':
+      return false;
+    default:
+      cout << "sorry, I don't understnd that.\n";
+      ++tries;
+    }
+  }
+  cout << "I'll take that for a no.\n";
+  return false;
+}
+```
+
+The `while-statement` executes until its condition becomes `false`.
