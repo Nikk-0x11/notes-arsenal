@@ -1,4 +1,4 @@
-### Basics of CPP [May, 17, 2022]
+### Basics of CPP
 
 C++ is a compiled language. For a program to run, its source text has to be processed by a compiler, producing object files, which are combined by a linked yielding an executable program. A C++ program typically consists of many source code files also called source files.
 
@@ -43,7 +43,7 @@ This is a simple "hello, world!" program in C++. The line `#include <iostream>` 
 The `std::` specifies that the name `cout` is to be found in the standard-library namespace. alternatively we can use `using namespace std;` this will make things a bit easier and we don't have to type `std::` anymore just simple `cout << "hello, world!"`.
 
 ---
-### Types, Variables, and Airthmetic [May, 18, 2022]
+### Types, Variables, and Airthmetic
 
 Every name and every expression has a type that determines the operation that may be performed on it. example: declaration of variables.
 
