@@ -134,3 +134,33 @@ x%=y    // x = x%y
 
 ---
 ### Constants
+
+C++ supports two notions of immutability
+- **`const`**: Meaning roughly "I promise not to change this value". This is used primarily to specific interfaces, so that data can be passed to functions without fear of it being modified. The compiler enforces the promise made by `const`.
+- **`constexpr`**: meaning roughly "to be evaluated at compile time". This is used primarily to specify constants, to allow placement of data in memory where it is unlikely to be corrupted, and for performance.
+
+example:
+```cpp
+const int dmv = 17;                       // dmv is a named constant
+int var = 17;                             // var is not a constant
+constexpr double max1 = 1.4*square(dmv);  // OK if square(17) is a constant expression
+constexpr double max2 = 1.4*square(var);  // error: var is not a constant expression
+const double max3 = 1.4*square(var);      // OK, may be evaluated at run time
+double sum(const vector<double>&);        // sum will not modify its argument
+vector<double> v {1.2, 3.4, 4.5};         // v is not a constant
+const double s1 = sum(v);                 // OK: evaluated at run time
+constexpr double s2 = sum(v);             // error: sum(v) not constant expression
+```
+
+For a function to be usable in a constant expression, that is, in an expression that will be evaluated by the compiler, it must be defined `constexpr`. example:
+
+```cpp
+constexpr double square(double x) { return x*x; }
+```
+
+To be `constexpr`, a function must be rather simple, just a `return` statement computing a value. A `constexpr` function can be used for non-constant arguments, but when that is done the result is not a constant expression. We allow a `constexpr` function to be called with non-contant-expression arguments in contexts that do no require constant expressions, so that we don't have to define essentially the same function twice: once for constant expressions and once for variables.
+
+In a few places, constant expressions are required by language rules, array bonded, case labels, some templete arguments, and constants declared using `constexpr`. In other cases, compile-time evaluation is imporant for performance. Independently of performance issues, the notion of immutability (of an object with an unchangeable state) is an important design concern.
+
+---
+### Tests and Loops
