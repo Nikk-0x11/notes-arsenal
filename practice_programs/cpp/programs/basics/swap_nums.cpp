@@ -8,6 +8,11 @@ int main()
   std::cout << "enter second number: ";
   std::cin >> b;
 
+  /*
+    assign temp to a
+    then a to b
+    then b to temp
+  */
   t = a;
   a = b;
   b = t;

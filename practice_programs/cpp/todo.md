@@ -15,14 +15,14 @@
 
 ### Decision and Loops
 
-- [ ] check whether number is even or odd
+- [x] check whether number is even or odd
 - [ ] find largest number among three numbers
 - [ ] find all roots of a quadratic equation
 - [ ] calculate sum of natural numbers
 - [ ] check leap year
 - [ ] find factorial
 - [ ] generate multiplication table
-- [ ] display fabonacci series
+- [ ] display fibonacci series
 - [ ] find GCD (greatest common divisor)
 - [ ] find LCM (least common multiple)
 - [ ] reverse a number
