@@ -11,6 +11,7 @@ source file 2 --> compiler --> object file 2
 An executable program is created for a specific hardware.system combination; it is not portable only the source code is portable and can be ran on variety of operating systems.
 
 C++ standard defines two kinds of entities:
+
 - core language feature. example: buil-in types `char` and `int` & loops `for-statements` and `while-statements`
 - standard-library components. example: containers `vector` and `map` & I/O operations `<<` and `getline()`
 
@@ -18,8 +19,9 @@ The standard-library components in C++ can be implemented with C++ itself and is
 
 C++ is a statically typed language. That is the type of every entity (object, value, name and expression) must be known to the compiler at it's point of use. The type of an object determines the set of operations applicable to it.
 
---- 
-### Hello, World!
+---
+
+### Hello, World
 
 ```cpp
 int main() {  }
@@ -43,6 +45,7 @@ This is a simple "hello, world!" program in C++. The line `#include <iostream>` 
 The `std::` specifies that the name `cout` is to be found in the standard-library namespace. alternatively we can use `using namespace std;` this will make things a bit easier and we don't have to type `std::` anymore just simple `cout << "hello, world!"`.
 
 ---
+
 ### Types, Variables, and Airthmetic
 
 Every name and every expression has a type that determines the operation that may be performed on it. example: declaration of variables.
@@ -54,12 +57,14 @@ int some_variable;
 this specifies that `some_variable` is of type `int`; that is, `some_variable` is an integer.
 
 A declaration is a statement that introduces a name into the program. It specifies a type for the named entity:
+
 - A type defines a set of possible value and a set of operations for an object.
 - An object is some memory that holds a value of soem type.
 - A value is a set of bits interpreted according to a type.
 - A variable is a named object.
 
 C++ have a variety of fundamental types. example:
+
 ```cpp
 bool    // boolean, possible values are true and false
 char    // character, example: 'a', 'b' and '7'
@@ -105,6 +110,7 @@ void random_func() // function that doesn't return a value
 Note that `=` is the assignment operator and `==` tests equality.
 
 When defining a variable, we don't actually need to state its type explicitly when it can be deduced from the initializer:
+
 ```cpp
 auto b = true;    // a bool
 auto ch = 'x';    // a char
@@ -133,13 +139,16 @@ x%=y    // x = x%y
 ```
 
 ---
+
 ### Constants
 
 C++ supports two notions of immutability
+
 - **`const`**: Meaning roughly "I promise not to change this value". This is used primarily to specific interfaces, so that data can be passed to functions without fear of it being modified. The compiler enforces the promise made by `const`.
 - **`constexpr`**: meaning roughly "to be evaluated at compile time". This is used primarily to specify constants, to allow placement of data in memory where it is unlikely to be corrupted, and for performance.
 
 example:
+
 ```cpp
 const int dmv = 17;                       // dmv is a named constant
 int var = 17;                             // var is not a constant
@@ -163,6 +172,7 @@ To be `constexpr`, a function must be rather simple, just a `return` statement c
 In a few places, constant expressions are required by language rules, array bonded, case labels, some templete arguments, and constants declared using `constexpr`. In other cases, compile-time evaluation is imporant for performance. Independently of performance issues, the notion of immutability (of an object with an unchangeable state) is an important design concern.
 
 ---
+
 ### Tests and Loops
 
 C++ provides a conventional set of statements for expressing selection and looping. example: a simple function that prompts the user and returns a Boolean indicating the response.
@@ -239,9 +249,11 @@ bool accept3()
 The `while-statement` executes until its condition becomes `false`.
 
 ---
+
 ### Pointers, Arrays and Loops
 
 AN array of elements of type `char` can be declared like this:
+
 ```cpp
 chat v[6];      // array of 6 characters
 ```
@@ -329,7 +341,6 @@ Link<Record>* 1st = nullptr;  // pointer to a Link to a Record
 int x = nullptr;              // error: nullptr is a pointer not an integer.
 ```
 
-
 It is often wise to check that a pointer argument that is supposed to point to something, actually points to something:
 
 ```cpp
@@ -357,10 +368,71 @@ The definition of `count_x()` assumes that the `char*` is a C-style string, that
 In older code, `0` or `NULL` is typically used instead of `nullptr`. However, using `nullptr` eliminates potential confition between integers (such as `0` or `NULL`) and pointers (such as `nullptr`).
 
 ---
+
 ### User-Defined Types
 
 We call the types that can be built from the fundamental types, the `const` modifier and the declarator operators built-in types. C++'s set of built-in types and operations is rich, but deliberately low-level. They directly and efficiently reflect the capabilities of conventional computer hardware. However, they don't provide the programmer with high-level facilities to conveniently write advanced applications. Instead C++ arguments the buil-int types and operations with a sophisticated set of abstraction mechanisms out of which programmers can build such high-level facilities. The c++ abstraction mechanisms are primarily designed to let programmers design an implement their own types, with suitable representations and operations, and for programmers design and implement their own types, with suitable representations and operations, and for programmers to simple and elegantly use such types. They built out of the built-in types using C++'s abstraction mechanisms are called user-defined types. They are referred to as classes and enumerations.
 
-
 ---
+
 ### Structures
+
+The first step in building a new type is often to organize the elements it needs into a data structure, a `struct`:
+
+```cpp
+struct Vector {
+  int sz;         // number of elements
+  double* elem;   // pointer to elements
+}
+```
+
+The first version of `Vector` consists of an `int` and a `double*`.
+  A variable of type `Vector` can be defined like this:
+
+```cpp
+Vector v;
+```
+
+However, by itself that is not of much use because `v`'s `elem` pointer doesn't point to anything. To be useful, we must give `v` some elements to point to. example: we can construct a `Vector` like this:
+
+```cpp
+void vector_init(Vector& v, int s)
+{
+  v.elem = new double[s];   // allocate an array of s doubles
+  v.sz = s;
+}
+```
+
+That is, `v`'s `elem` member gets a pointer produced by the `new` operator and `v`'s `size` member gets the number of elements. The `&` in `Vector&` indicates that we pass `v` by non-`const` reference. that way, `vector_init()` can modify the vector passed to it.
+
+The `new` operator allocates memory from an area called the free store (also known as dynamic memory and heap.)
+
+A simple use of `Vector` looks like this:
+
+```cpp
+double read_and_sum(int s)
+  // read s integers from cin and return their sum; s is assumed to be positive
+{
+  Vector v;
+  vector_init(v, s);                  // allocate s elements for v
+  for (int i = 0; i != s; ++i)
+    cin >> v.elem[i];                 // read into elements
+
+  double sum = 0;
+  for (int i = 0; i != s; ++i)
+    sum += v.elem[i];                 // take the sum of the elements
+
+  return sum;
+}
+```
+
+We use `.` (dot) to access `struct` members through a name (and through a reference) and `->` to access `struct` members through a pointer. example:
+
+```cpp
+void f(Vector v, Vector& rv, Vector* pv)
+{
+  int i1 = v.sz;      // access through name
+  int i2 = rv.sz;     // access through reference
+  int i4 = pv -> sz;  // access through pointer
+}
+```
