@@ -436,3 +436,180 @@ void f(Vector v, Vector& rv, Vector* pv)
   int i4 = pv -> sz;  // access through pointer
 }
 ```
+
+---
+### Classes
+
+A class is a user-defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. A C++ class is like a blueprint for an object.
+
+
+#### Accessing data members
+
+The data members and member functions of class can be accessed using the `dot` operator with the object.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Test
+{
+  // access specifier
+public:
+  // data members
+  string testName;
+
+  // member func()
+  void memberFunc()
+  {
+    cout << "member name: " << testName << endl;
+  }
+};
+
+int main()
+{
+  // declaring an object of class Test
+  Test testObj;
+
+  // accessing data member
+  testObj.testName = "Nikk";
+
+  // accessing member function
+  testObj.memberFunc();
+
+  return 0;
+}
+```
+
+
+#### Member functions in classes
+
+- Inside class definition
+- Outside class definition
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class testClass
+{
+public:
+  string testName;
+  int id;
+
+  // printName() not defined inside class
+  void printName();
+
+  // printId() defined inside class
+  void printId()
+  {
+    cout << "parson id: " << testName << endl;
+  }
+};
+
+// defining printName() using scope resolution operator ::
+void testClass::printName()
+{
+  cout << "parson name: " << testName << endl;
+}
+
+int main()
+{
+  testClass testObj;
+  testObj.testName = "Nikk";
+  testObj.id = 17;
+
+  // call printName()
+  testObj.printName();
+
+  // call printId()
+  testObj.printId();
+
+  return 0;
+}
+```
+
+#### Constrctors
+Constructors are special class members which are called by the compiler every time an object of that class is initiated. Constructors have the same name as the class and may be defined inside or outside the class definition.
+- Default Constructors
+- Parameterized Constructors
+- Copy Constructors
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Names
+{
+public:
+  int id;
+
+  // default constructor
+  Names()
+  {
+    cout << "default constructor called: " << endl;
+    id = -1;
+  }
+
+  // parameterized constructor
+  Names(int x)
+  {
+    cout << "parameterized constructor called: " << endl;
+    id = x;
+  }
+};
+
+int main()
+{
+  // testObj1 will call default constructor
+  Names testObj1;
+  cout << "name id is: " << testObj1.id << endl;
+
+  // testObj2 will call default constructor
+  Names testObj2(17);
+  cout << "name id is: " << testObj2.id << endl;
+
+  return 0;
+}
+```
+
+A **Copy Constructor** creates a new object, which is exact copy of the existing object. The compiler provides a default Copy Constructor to all the classes.
+
+```cpp
+class-name (class-name &) {}
+```
+
+#### Destructor
+Destructor is another special member function that is called by the compiler when the scope of the object ends.
+
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class testClass
+{
+public:
+  int id;
+
+  // defining destructor
+  ~testClass()
+  {
+    cout << "destructor called for id: " << id << endl;
+  }
+};
+
+int main()
+{
+  testClass testObj1;
+  testObj1.id = 17;
+  int i = 0;
+  while (i < 5)
+  {
+    testClass testObj2;
+    testObj2.id = 14;
+    i++;
+  } // testObj2 scope ends here
+
+  return 0;
+} // testObj1 scope ends here
+```
