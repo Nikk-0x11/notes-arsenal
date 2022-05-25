@@ -387,7 +387,7 @@ struct Vector {
 ```
 
 The first version of `Vector` consists of an `int` and a `double*`.
-  A variable of type `Vector` can be defined like this:
+A variable of type `Vector` can be defined like this:
 
 ```cpp
 Vector v;
@@ -438,10 +438,10 @@ void f(Vector v, Vector& rv, Vector* pv)
 ```
 
 ---
+
 ### Classes
 
 A class is a user-defined data type, which holds its own data members and member functions, which can be accessed and used by creating an instance of that class. A C++ class is like a blueprint for an object.
-
 
 #### Accessing data members
 
@@ -479,7 +479,6 @@ int main()
   return 0;
 }
 ```
-
 
 #### Member functions in classes
 
@@ -528,8 +527,10 @@ int main()
 }
 ```
 
-#### Constrctors
+#### Constructors
+
 Constructors are special class members which are called by the compiler every time an object of that class is initiated. Constructors have the same name as the class and may be defined inside or outside the class definition.
+
 - Default Constructors
 - Parameterized Constructors
 - Copy Constructors
@@ -579,8 +580,8 @@ class-name (class-name &) {}
 ```
 
 #### Destructor
-Destructor is another special member function that is called by the compiler when the scope of the object ends.
 
+Destructor is another special member function that is called by the compiler when the scope of the object ends.
 
 ```cpp
 #include <iostream>
@@ -613,3 +614,139 @@ int main()
   return 0;
 } // testObj1 scope ends here
 ```
+
+---
+
+### Enumerations
+
+An enumeration is a user-defined data type that consists of integral constants. To define an enumeration, keyword `enum` is used.
+
+```cpp
+enum season { spring, summer, autumn, winter };
+```
+
+here, the name of the enumeration is `season`. and `spring`, `summer` and `winter` are values of type `season`.
+
+by default, `spring` is 0, `summer` is 1 and so on. We can change the defauly value of an enum element during declaration if we want to.
+
+```cpp
+enum season
+{
+  spring = 0,
+  summer = 4,
+  autumn = 8,
+  winter = 12
+};
+```
+
+#### Enumerated Type Declaration
+
+when we create an enumerated type, only blueprint for the variable is created.
+
+create variables of enum type
+
+```cpp
+enum boolean { false, true };
+
+// inside function
+enum boolean check;
+```
+
+here, a variable `check` of type `enum boolean` is created.
+
+```cpp
+enum boolean
+{
+  false, true
+} check;
+```
+
+> why enums are used in cpp?
+> An enum variable takes only one value out of many possible values.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+enum suit
+{
+    club = 0,
+    diamonds = 10,
+    hearts = 20,
+    spades = 3
+} card;
+
+int main()
+{
+    card = club;
+    cout << "Size of enum variable " << sizeof(card) << " bytes." << endl;
+
+    return 0;
+}
+```
+
+It's because the size of an integer is 4 bytes. This makes enum a good choice to work with flags.
+
+#### using enum for flags
+
+```cpp
+enum designFlags
+{
+  ITALICS = 1,
+  BOLD = 2,
+  UNDERLINE = 4
+} button;
+```
+
+you are designing a button for Windows application. You can set flags `ITALICS`, `BOLD` and `UNDERLINE` to work with text.
+
+There is a reason why all the integral constants are power of 2 in above pseudo code.
+
+```
+// In binary
+
+ITALICS = 00000001
+BOLD = 00000010
+UNDERLINE = 00000100
+```
+
+```cpp
+#include <iostream>
+using namespace std;
+
+enum designFlags
+{
+    BOLD = 1,
+    ITALICS = 2,
+    UNDERLINE = 4
+};
+
+int main()
+{
+    int myDesign = BOLD | UNDERLINE;
+
+    //    00000001 | 00000100
+    //    00000101
+
+    cout << myDesign << endl;
+
+    return 0;
+}
+```
+
+in this program we know that bold and underline is used.
+
+we can also add flag to our requirements.
+
+```cpp
+if (myDesign & ITALICS)
+{
+  // code for italics
+}
+```
+
+Here, we have added italics to our design, Note, only code for italics is written inside the `if statement`
+
+---
+
+### Modularity
