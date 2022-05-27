@@ -47,3 +47,85 @@ Everything in C++ s associated with classes and objects, along with its attribut
 Attributes and methods are basically **variables** and **functions** that belongs to the class. These are often referred to as "class members".
 
 A class is a user-defined data type that we can use in out program, and it works as an object constructor, or a "blueprint" for creating objects.
+
+**Creating a class**
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class testClass
+{
+public:
+    int testNum;
+    string testString;
+};
+
+```
+
+- The `class` keyword is used to create a class called `testClass`.
+- The `public` keyword is an access specifier, which specifies that members (attributes and methods) of the class are accessible from outside the class.
+- Inside the class, there is an integer variable `testNum` and a string variable `testString`. When variables are declared within a class, they are called attributes.
+
+**Creating an object**
+
+An object is created for a class. We can use old class `testClass` to create objects.
+
+To create an object of `testCLass`, we have to specify the class name, followed by the object name. To access the class attributes `testNum` and `testString` we use the dot syntax on the object:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class testClass
+{
+public:
+    int testNum;
+    string testString;
+};
+int main()
+{
+    testClass testObj;
+
+    testObj.testNum = 17;
+    testObj.testString = "testing string";
+
+    cout << testObj.testNum << endl;
+    cout << testObj.testString << endl;
+    return 0;
+}
+```
+
+**Creating multiple objects**
+
+multiple objects can be created with one single class
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Car
+{
+public:
+    string brand;
+    string model;
+    int year;
+};
+
+int main()
+{
+    Car carsObj1;
+    carsObj1.brand = "BMW";
+    carsObj1.model = "X5";
+    carsObj1.year = 2000;
+
+    Car carsObj2;
+    carsObj2.brand = "Ford";
+    carsObj2.model = "Mustang";
+    carsObj2.year = 1969;
+
+    cout << carsObj1.brand << " " << carsObj1.model << " " << carsObj1.year << endl;
+    cout << carsObj2.brand << " " << carsObj2.model << " " << carsObj2.year << endl;
+    return 0;
+}
+```
