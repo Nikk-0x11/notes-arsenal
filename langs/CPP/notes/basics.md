@@ -750,3 +750,32 @@ Here, we have added italics to our design, Note, only code for italics is writte
 ---
 
 ### Modularity
+
+A CPP program consists of many separately developed parts such as functions, user-defined types, class hierarchies, and templates. The key to managing this is to clearly defined the interaction among those parts. The first and most important step is to distinguish between the interface to a part and its implementation. At the language level. C++ represents interfaces by declarations. A declaration specifies all that's needed to use a function or a type.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    double sqrt(double);        // the square root function takes a double
+                                // and returns a double
+
+    class Vector
+    {
+    public:
+        Vector(int s);
+        double &operator[](int i);
+        int size();
+
+    private:
+        double *elem; // elem points to an array of sz doubles
+        int sz;
+    };
+
+    return 0;
+};
+```
+
+They key point here is that the function bodies, the function definitions are "elsewhere".
