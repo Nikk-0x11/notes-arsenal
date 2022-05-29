@@ -7,4 +7,4 @@
 - **guides** -> guides on different stuff.
 - **langs** -> programming languages reference notes.
 - **random programs** -> randomly coded scripts?
-- **practice programs** -> some basic programs for revision... xD
+- **practice programs** -> some basic programs for revision.
