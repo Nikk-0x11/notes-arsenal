@@ -409,3 +409,83 @@ Inside `main()` we create an object of the `Employee` class. Now we can use the 
 ---
 
 ### Inheritance
+
+In CPP it is possible to inherit attributes and methods from one class to another. We group inheritance into two categories:
+
+- derieved class (child) - the class that inherits from another class
+- base class (parent) - the class being inherited from.
+
+To inherit from a class, we use the `:` symbol.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// base class
+class Vehicle
+{
+public:
+  string brand = "Ford";
+  void honk()
+  {
+    cout << "tuut, toot!" << endl;
+  }
+};
+
+// derived class
+class Car : public Vehicle
+{
+public:
+  string model = "Mustang";
+};
+
+int main()
+{
+  Car myCar;
+  myCar.honk();
+  cout << myCar.brand + " " + myCar.model << endl;
+  return 0;
+}
+```
+
+**Why and WHen to use Inheritance?**
+
+It is useful for code reusability: reuse attributes and methods of an existing class when you create a new class
+
+**Multilevel Inheritance**
+
+A class can also be derived from one class, whcih is already derived from another class.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// base class (parent)
+class testClass
+{
+public:
+  void testFunction()
+  {
+    cout << "Some context in parent class." << endl;
+  }
+};
+
+// derived class (child)
+class testChild : public testClass
+{
+};
+
+// derived class (grandchild)
+class testGrandChild : public testChild
+{
+};
+
+int main()
+{
+  testGrandChild testObj;
+  testObj.testFunction();
+  return 0;
+}
+```
+
+In this example, `testGrandChild` is derived from class `testChild` (which is derived from `testClass`).
