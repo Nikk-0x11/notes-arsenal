@@ -489,3 +489,86 @@ int main()
 ```
 
 In this example, `testGrandChild` is derived from class `testChild` (which is derived from `testClass`).
+
+**Multiple Inheritance**
+
+A class can also be derived from more than one base class, using a comma-separated list.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// base class
+class testClass
+{
+public:
+  void testFunction()
+  {
+    cout << "some text from base class." << endl;
+  }
+};
+
+// another base class
+class otherTestClass
+{
+public:
+  void otherTestFunction()
+  {
+    cout << "some text from another base class." << endl;
+  }
+};
+
+// derived class
+class testChildClass : public testClass, public otherTestClass
+{
+};
+
+int main()
+{
+  testChildClass testObj;
+  testObj.testFunction();
+  testObj.otherTestFunction();
+  return 0;
+}
+```
+
+**Access Specifiers**
+
+We have only used `public` (member of a class are accessible from outside the class) and `private` (members can only be accessed within the class). The third specifier `protected` is similar to `private`, but it can also be accessed in the `inherited class`:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// base class
+class Employee
+{
+protected:
+  int salary;
+};
+
+// derived class
+class Programmer : public Employee
+{
+public:
+  int bonus;
+  void setSalary(int s)
+  {
+    salary = s;
+  }
+  int getSalary()
+  {
+    return salary;
+  }
+};
+
+int main()
+{
+  Programmer testObj;
+  testObj.setSalary(50000);
+  testObj.bonus = 15000;
+  cout << "Salary: " << testObj.getSalary() << endl;
+  cout << "Bonus: " << testObj.bonus << endl;
+  return 0;
+}
+```
