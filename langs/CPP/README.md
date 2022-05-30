@@ -1,6 +1,6 @@
 # indexing for CPP Notes
 
-- #### [Basics](./notes/basics.md)
+- [Basics](./notes/basics.md)
 
   - [Intro](./notes/basics.md#basics-of-cpp)
   - [Hello, World](./notes/basics.md#hello-world)
@@ -14,7 +14,7 @@
   - [Enumerations](./notes/basics.md#enumerations)
   - [Modularity](./notes/basics.md#modularity)
 
-- #### [OOPS - Object Oriented Programming](./notes/oo-programming.md#intro)
+- [OOPS - Object Oriented Programming](./notes/oo-programming.md#intro)
 
   - [Class Methods](./notes/oo-programming.md#class-methods)
   - [Parameters](./notes/oo-programming.md#parameters)
@@ -22,5 +22,4 @@
   - [Access Specifiers](./notes/oo-programming.md#access-specifiers)
   - [Encapsulation](./notes/oo-programming.md#encapsulation)
   - [Inheritance](./notes/oo-programming.md#inheritance)
-
-  All C++ notes here are from a book called "**The C++ Programming Language by 4th Edition Bjarne Stroustrup**"
+  - [Polymorphism](./notes/oo-programming.md#polymorphism)
