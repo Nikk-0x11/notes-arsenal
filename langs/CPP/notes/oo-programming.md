@@ -704,3 +704,87 @@ int main()
 }
 
 ```
+
+---
+
+### Exceptions
+
+When we execute CPP code, different errors can occur: coding errors made by the programmer, errors due to wrong input or other unforeseeable things. When an error occurs, CPP will normally stop and generate an error message. The technical term for this is CPP will throw an exception.
+
+**try and catch**
+
+Exception handling consist of hree keywords: `try`, `throw` and `catch`:
+
+The `try` statement allows us to define a block of code to be tested for errors while it is being executed.
+
+The `throw` keyword throws an exception when a problem is detected, which lets us create a custom error.
+
+The `catch` statement allows us to define a block of code to be executed if an error occurs in the try block.
+
+The `try` and `catch` keywords come in pairs:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  try
+  {
+    int age = 17;
+    if (age >= 17)
+    {
+      cout << "Access granted - you are old enough." << endl;
+    }
+    else
+    {
+      throw(age);
+    }
+  }
+
+  catch (int testNum)
+  {
+    cout << "Access denied - You must be at least 17 years old." << endl;
+    cout << "Age is: " << testNum << endl;
+  }
+  return 0;
+}
+```
+
+We can also use the `throw` keyword to output a reference number like a custom error number/code for organizing purposes:
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  try
+  {
+    int age = 17;
+    if (age >= 18)
+    {
+      cout << "Access granted - you are old enough." << endl;
+    }
+    else
+    {
+      throw 505;
+    }
+  }
+
+  catch (int testNum)
+  {
+    cout << "Access denied - You must be at least 18 years old." << endl;
+    cout << "Error number: " << testNum << endl;
+  }
+  return 0;
+}
+```
+
+**handle any type of exception (...)**
+
+If we do not know the `throw` type used in the `try` block we can use the "three dots" syntax `...` inside the `catch` block which will handle any type of exception:
+
+```cpp
+
+```
