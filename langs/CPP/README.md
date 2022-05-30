@@ -24,3 +24,4 @@
   - [Inheritance](./notes/oo-programming.md#inheritance)
   - [Polymorphism](./notes/oo-programming.md#polymorphism)
   - [Files](./notes/oo-programming.md#files)
+  - [Exception Handling](./notes/oo-programming.md#exceptions)
