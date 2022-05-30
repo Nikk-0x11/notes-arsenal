@@ -572,3 +572,63 @@ int main()
   return 0;
 }
 ```
+
+---
+
+### Polymorphism
+
+Polymorphism means "many forms" and it occurs when we have many classes that are related to each other by inheritance.
+
+Inheritance lets us inherit attributes and methods from another class. Polymorphism uses those methods to perform different tasks. This allow us to perform a single action in different ways.
+
+> We learnt in `Inheritance` that we use `:` symbol to inherit from a class.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+// base class
+class Animal
+{
+public:
+  void animalSound()
+  {
+    cout << "The animals makes a sound" << endl;
+  }
+};
+
+// derived class
+class Cat : public Animal
+{
+public:
+  void animalSound()
+  {
+    cout << "The cat says: meow meow" << endl;
+  }
+};
+
+// derived class
+class Dog : public Animal
+{
+public:
+  void animalSound()
+  {
+    cout << "The dog says: bow wow" << endl;
+  }
+};
+
+int main()
+{
+  Animal myAnimal;
+  Cat myCat;
+  Dog myDog;
+
+  myAnimal.animalSound();
+  myCat.animalSound();
+  myDog.animalSound();
+  return 0;
+}
+```
+
+**When and Why to use Inheritance and Polymorphism?**
+It is useful for code reusability: reuse attributes and methods of an existing class when you create a new class.
