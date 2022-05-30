@@ -632,3 +632,75 @@ int main()
 
 **When and Why to use Inheritance and Polymorphism?**
 It is useful for code reusability: reuse attributes and methods of an existing class when you create a new class.
+
+---
+
+### Files
+
+The `fstream` library allows us to work with files. To use the `fstream` library, include both the standard `<iostream>` and the `<fstream>` header file:
+
+There are three classes included in the `fstream` library, which are used to create, write or read files:
+
+- `ofstream` : Creates and writes to files
+- `ifstream` : Reads from files
+- `fstream` : A combination of `ofstream` and `ifstream`: creates, reads and writes to files.
+
+**create and write to a file**
+
+To create a file, we can either use `ofstream` or `fstream` class, and specify the name of the file. To write to the file, use the insertion operator `<<`.
+
+```cpp
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+  // create and open a text file
+  ofstream testFile("neko.txt");
+
+  // write to the file
+  testFile << "ehh this is dem nicu!" << endl;
+
+  // close the file
+  testFile.close();
+
+  return 0;
+}
+```
+
+**Why do we close the file?**
+It is considered good practice, and it can clean up unnecessary memory space.
+
+**read a file**
+
+To read from a file we either use the `ifstream` or `fstream` class and the name of the file.
+
+Note that we also use a `while` loop together with the `getline()` function which belongs to the `ifstream` class to read the file line by line and to print the content of the file:
+
+```cpp
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int main()
+{
+  // create a text string which is used to output the text file
+  string testStr;
+
+  // read from text file
+  ifstream testReadFile("neko.txt");
+
+  // using a while loop together which the getline() function to read the file line by line
+  while (getline(testReadFile, testStr))
+  {
+    // output text from the file
+    cout << testStr << endl;
+  }
+
+  // close the file
+  testReadFile.close();
+}
+
+```
