@@ -21,8 +21,8 @@
 - [x] find all roots of a quadratic equation
 - [x] calculate sum of natural numbers
 - [x] check leap year
-- [ ] find factorial
-- [ ] generate multiplication table
+- [x] find factorial
+- [x] generate multiplication table
 - [ ] display fibonacci series
 - [ ] find GCD (greatest common divisor)
 - [ ] find LCM (least common multiple)
