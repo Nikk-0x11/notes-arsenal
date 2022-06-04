@@ -1,14 +1,7 @@
-
-This blogpost is a revival of a collection of ancients one.
-I was too lazy to port them from [wordpress](http://wordpress.org/) to [pelican](http://blog.getpelican.com/).
-But [TDKPS](https://twitter.com/TDKPS) asked me if I could
-put them back online, since he used them to teach radare2's basics.
-
 Enjoy a completely rewritten reverse-engeenering tutorial proudly
 powered by radare2 !
 
-Grab [radare2](http://www.radare.org/y/), an [asm cheat sheet](http://www.jegerlehner.ch/intel/),
-the [IOLI crackme suite](), and geat ready.
+Grab [radare2](http://www.radare.org/y/), an [asm cheat sheet](http://www.jegerlehner.ch/intel/), the [IOLI crackme suite](), and geat ready.
 
 # crackme 0x00
 
@@ -43,6 +36,7 @@ What is 250382 ?
     Password OK :)
 
 # crackme0x01
+
 This time, no luck with _rabin2 -z_.
 Let's check with _radare2_.
 
@@ -258,7 +252,6 @@ this seems plausible. Let's check with some Python:
         InvalidPassword!
 
 Woohoo, we where right.
-
 
 # crackme0x04
 
@@ -666,16 +659,14 @@ But, there is another way:
     29 sections
 
 Since this binary is not stripped (_man strip_), you can notice a ".comment" section.
-    $ r2 ./crackme0x06
-    [0x08048400]> s section..comment
-    [0x08049028]> ps 128
-    \x00GCC: (GNU) 3.4.6 (Gentoo 3.4.6-r2, ssp-3.4.6-1.0, pie-8.7.10)\x00\x00GCC: (GNU) 3.4.6 (Gentoo 3.4.6-r2, ssp-3.4.6-1.0, pie-8.7.10)\x00\x00G
+$ r2 ./crackme0x06
+[0x08048400]> s section..comment
+[0x08049028]> ps 128
+\x00GCC: (GNU) 3.4.6 (Gentoo 3.4.6-r2, ssp-3.4.6-1.0, pie-8.7.10)\x00\x00GCC: (GNU) 3.4.6 (Gentoo 3.4.6-r2, ssp-3.4.6-1.0, pie-8.7.10)\x00\x00G
 
 Yay, GCC 3.4.6 on a Gentoo 3.4.6-r2 !
 
-
 # crackme0x07
-
 
     [0x08048400]> aa
     [0x08048400]> pdf
@@ -722,7 +713,7 @@ What happened to symbols ?!
 
 This binary is stripped : no more symbols.
 
-Since this is GCC-produced code, the main is likely at 0x804867d (the last push before _imp.__libc_start_main_)
+Since this is GCC-produced code, the main is likely at 0x804867d (the last push before _imp.\_\_libc_start_main_)
 
     $ r2 ./crackme0x07
     [0x08048400]> aa
@@ -975,6 +966,7 @@ Maybe our password.
 :)
 
 # crackme0x08
+
 Let's be <del>lazy</del> clever : our binary rouglhy share the same structure.
 It would be nice if we could _diff_ them, and focus on the differences, instead of
 having to reverse them from the start, to remember every routine, ...

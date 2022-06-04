@@ -1,4 +1,4 @@
-======================= IOLI CRACKME v1.2 by pof =======================
+======================= IOLI CRACKME v1.2 =======================
 
 [Goal]
 	Crack the executable files to accept any password
