@@ -423,10 +423,195 @@ Here, the variables `x` and `num` can hold only zero and positive values because
 
 Considering the size of `int` is 4 bytes, variable `y` can hold values from `-2^31` to `2^31-1`, whereas variable `x` can hold values from `0` to `2^32-1`.
 
----
-
 ## Derived Data Types
 
 Data types that are derived from fundamental data types are derived types.
 
 example: arrays, pointers, function types, structures, etc.
+
+---
+
+## Input/Output (I/O)
+
+#### Output
+
+In C, `printf()` is one of the main output function. The function sends formatted output the the screen.
+
+**example:**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  // display the string inside quotations
+  printf("hewwo, world!\n");
+  return 0;
+}
+```
+
+**Output:**
+
+```
+hewwo, world!
+```
+
+**Working**
+
+- All valid C programs must contain the `main()` function. The code execution begins from the start of the `main()` function.
+- The `printf()` is a library function to send formatted output to the screen. The function prints the string inside quotations.
+- To use `printf()` in out program, we need to include `stdio.h` header file using the `#include <stdio.h>` statement.
+- The `return 0;` statement inside the `main()` function is the `Exit status` of the program, it's optional.
+
+**Integer Output**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int testInt = 5;
+  printf("Number = %d\n ", testInt);
+  return 0;
+}
+```
+
+**Output:**
+
+```
+Number = 5
+```
+
+We use `%d` format specifier to print `int` types. Here, the `%d` inside the quotations will be replaced by te value of `testInt`.
+
+**float and double output**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  float num1 = 13.4;
+  double num2 = 12.4;
+
+  printf("num1 = %f\n", num1);
+  printf("num2 = %lf\n", num2);
+  return 0;
+}
+```
+
+**Output:**
+
+```
+num1 = 13.400000
+num2 = 12.400000
+```
+
+The print `float`, we use `%f` format specifier. Similarly, we use `lf` to print `double` values.
+
+**print characters**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  char chr = 'n';
+  printf("character: %c\n", chr);
+  return 0;
+}
+```
+
+**Output:**
+
+```
+character: n
+```
+
+To print `char`, we use `%c` format specifier.
+
+#### Input
+
+In C, `scanf()` is one of the commonly ued function to take input from the user. The `scanf()` function reads formatted input from the standard input such as keywords.
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int testInt;
+  printf("enter a number: ");
+  scanf("%d", &testInt);
+  printf("number = %d\n", testInt);
+  return 0;
+}
+```
+
+Here, we have used `%d` format specifier inside the `scanf()` function to take `int` input from the user. When the user enters an integer, it is stored in the `testInt` variable.
+
+> Notice that we have used `&testInt` inside `scanf()`. It is because `&testInteger` gets the address of `testInt`, and the value entered by the user is stored in that address.
+
+**ACII Values I/O**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  char chr;
+  printf("enter a character: ");
+  scanf("%c", &chr);
+
+  // When %c is used, a character is displayed
+  printf("You entered %c\n", chr);
+
+  // When %d is used, ASCII value is displayed
+  printf("ASCII value is %d\n", chr);
+  return 0;
+}
+```
+
+**Multuple I/O**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int a;
+  float b;
+
+  printf("enter integer and then a float: ");
+
+  // multiple inputs
+  scanf("%d%f", &a, &b);
+
+  printf("you entered %d and %f\n", a, b);
+  return 0;
+}
+```
+
+#### Format Specifiers for I/O
+
+- `%d` for `int`
+- `%d` for `float`
+- `%lf` for `double`
+- `%c` for `char`
+
+**List of commonly used C data types and their format specifiers**
+
+| Data Type              | Format Specifier |
+| ---------------------- | ---------------- |
+| int                    | %d               |
+| char                   | %c               |
+| float                  | %f               |
+| double                 | %lf              |
+| short int              | %hd              |
+| unsigned int           | %u               |
+| long int               | %li              |
+| long long int          | %lli             |
+| unsigned long int      | %lu              |
+| unsigned long long int | %llu             |
+| signed char            | %c               |
+| unsigned char          | %c               |
+| long double            | %Lf              |
