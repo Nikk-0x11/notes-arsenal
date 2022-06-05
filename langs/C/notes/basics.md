@@ -615,3 +615,37 @@ int main()
 | signed char            | %c               |
 | unsigned char          | %c               |
 | long double            | %Lf              |
+
+---
+
+## Comments
+
+- single line comments
+- multi line comments
+
+**single line comment**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  // single line comment
+  prinf("some text");
+}
+```
+
+**multi line comment**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  /*
+    multiline
+    comment
+  */
+  prinf("some text");
+}
+```
