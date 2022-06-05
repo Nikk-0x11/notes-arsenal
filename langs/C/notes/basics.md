@@ -1,12 +1,12 @@
-## Introduction
+# Introduction
 
-### C Keywords and Identifiers
+## C Keywords and Identifiers
 
-**Character set**
+#### **Character set**
 
 A character set is a set of alphabets, letters and some special characters that are valid in C language.
 
-**Alphabets**
+#### **Alphabets**
 
 ```c
 Uppercase: A B C ................................... X Y Z
@@ -15,13 +15,13 @@ Lowercase: a b c ...................................... x y z
 
 C accepts both lowercase and uppercase alphabets as variables and functions.
 
-**Digits**
+#### **Digits**
 
 ```c
 0 1 2 3 4 5 6 7 8 9
 ```
 
-**Special Characters**
+#### **Special Characters**
 
 ```c
 ,	<	>	.	_
@@ -32,11 +32,11 @@ C accepts both lowercase and uppercase alphabets as variables and functions.
 -	\	~	+
 ```
 
-**White space characters**
+#### **White space characters**
 
 Blank space, newline, horizontal tab, carriage return and form feed.
 
-### C keywords
+## C keywords
 
 Keywords are predefined, reserved words used in programming that have special meanings to the compiler. Keywords are part of the syntax and they cannot be used as an identifier
 
@@ -85,7 +85,7 @@ short
 unsigned
 ```
 
-### C Identifiers
+#### C Identifiers
 
 Identifiers refers to name given to entities such as variables, function, structures, etc.
 
@@ -114,9 +114,9 @@ Also, Identifier names must be different from keywords. We cannot use `int` as a
 
 ---
 
-### Variables, Constants and Literals
+## Variables, Constants and Literals
 
-**Variables**
+#### **Variables**
 
 A variable is a container to hold data.
 
@@ -145,7 +145,7 @@ ch = 1;
 
 3. There is no rule on how long a variable name (identifier) can be. However, you may run into problems in some compilers if the variable name is longer than 31 characters.
 
-> **Note: ** You should always try to give meaningful names to variables. example: `firstName` is a better variable name than `fn`.
+> **Note:** You should always try to give meaningful names to variables. example: `firstName` is a better variable name than `fn`.
 
 C is a strongly typed language. This means that the variable type cannot be changed once it is declared. example:
 
@@ -157,7 +157,7 @@ double number;   // error
 
 Here, the type of `number` variable is `int`. You cannot assign a floating-point (decimal) value `5.5` to this variable. Also, you cannot redefine the data type of the variable to `double`. By the way, to store the decimal values in C, you need to declare its type to either `double` or `float`.
 
-**Literals**
+#### **Literals**
 
 Literals are data used for representing fixed values. They can be used directly in the code.
 
@@ -189,7 +189,7 @@ A floating-point literal is a numeric literal that has either a fractional form 
 -0.22E-5
 ```
 
-> **Note: ** `E-5 = 10 ^ -5`
+> **Note:** `E-5 = 10 ^ -5`
 
 3. **Characters**
 
@@ -231,7 +231,7 @@ example:
 "Earth is round\n"         // prints string with a newline
 ```
 
-**Constants**
+#### **Constants**
 
 If we want to define a variable whose value cannot be changed, we can use the `const` keyword. This will create a constant.
 
@@ -247,3 +247,186 @@ const double PI = 3.14;
 const double PI = 3.14;
 PI = 2.9;   // error
 ```
+
+---
+
+## Data Types
+
+In C, data types are declarations for variables. This determines the type and size of data associated with variable.
+
+example:
+
+```c
+int testVar;
+```
+
+Here, `testVar` is a variable of `int` (integer) type. The size of `int` is 4 bytes.
+
+#### **Basic Types**
+
+| Type                   | Size (bytes)                  | Format Specifier |
+| ---------------------- | ----------------------------- | ---------------- |
+| int                    | at least 2, usually 4         | %d, %i           |
+| char                   | 1                             | %c               |
+| float                  | 4                             | %f               |
+| double                 | 8                             | %lf              |
+| short int              | 2 usually                     | %hd              |
+| unsigned int           | at least 2, usually 4         | %u               |
+| long int               | at least 4, usually 8         | %ld, %li         |
+| long long int          | at least 8                    | %lld, %lli       |
+| unsigned long int      | at least 4                    | %lu              |
+| unsigned long long int | at least 8                    | %llu             |
+| signed char            | 1                             | %c               |
+| unsigned char          | 1                             | %c               |
+| long double            | at least 10, usually 12 or 16 | %Lf              |
+
+#### **int**
+
+Integers are whole numbers that can have both zero, positive and negative values but no decimal values.
+
+example: `0`, `-5`, `10`
+
+we use `int` for declaring an integer variable.
+
+```c
+int someVar;
+```
+
+We can declare multiple variables at once in C.
+
+example:
+
+```c
+int someVar, anotherVar;
+```
+
+The size of `int` is usually 4 bytes (32bits). And it can take `w^32` distinct states from `-2147483648` to `2147483647`.
+
+#### **float and double**
+
+`float` and `double` are used to hold real numbers.
+
+```c
+float someVar;
+double someVarAgain;
+```
+
+In C, floating-point numbers can also be represented in exponential.
+
+example:
+
+```c
+float normalizationFactor = 22.442e2;
+```
+
+> Difference between `float` and `double`?
+> The size of `float` is 4 type. And the size of `double` is 8 bytes.
+
+#### **char**
+
+Keyword `chat` is used for declaring character type variables.
+
+example:
+
+```c
+char word = 'n';
+```
+
+The size of the character variable is 1 byte.
+
+#### **void**
+
+`void` is an incomplete type. It means "nothing" or "no type". You can think of void as **absent**.
+
+example:
+
+if a function is not returning anything, its return type should be `void`.
+
+> **Note:** We cannot create variables of `void` type.
+
+#### **short and long**
+
+If you need to use a large number, you can use a type specifier `long`.
+
+```c
+long a;
+long long b;
+long double c;
+```
+
+Here variables `a` and `b` can store integer values. And, `c` can store a floating-point number.
+
+If you are sure, only a small integer (`[-32,767, +32,767]` range) will be used, you can use `short`.
+
+```c
+short d;
+```
+
+We can always check the size of a variable using the `sizeof()` operator.
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  short a;
+  long b;
+  long long c;
+  long double d;
+
+  printf("size of short = %ld bytes\n", sizeof(a));
+  printf("size of long = %ld bytes\n", sizeof(b));
+  printf("size of long long = %ld bytes\n", sizeof(c));
+  printf("size of long double = %ld bytes\n", sizeof(d));
+
+  /*
+  warning:
+  format ‘%d’ expects argument of type ‘int’,
+  but argument 2 has type ‘long unsigned int’
+  */
+
+  return 0;
+}
+```
+
+#### signed and unsigned
+
+In C, `signed` and `unsinged` are type modifiers. We can alter the data storage of a data type by using them:
+
+- `signed` - allows for storage of both positive and negative numbers.
+- `unsigned` - allows for storage of only positive numbers.
+
+example:
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  // valid codes
+  unsigned int x = 35;
+  int y = -35; // signed int
+  int z = 36;  // signed int
+
+  // invalid code: unsigned int cannot hold negative integers
+  unsigned int num = -35;
+
+  printf("valid:\npositive unsigned int: %d\n", x);
+  printf("negative int: %d\n", y);
+  printf("positive int: %d\n", z);
+  printf("\ninvalid:\nnegative unsigned int: %d\n", num);
+  return 0;
+}
+```
+
+Here, the variables `x` and `num` can hold only zero and positive values because we have used the `unsigned` modifier.
+
+Considering the size of `int` is 4 bytes, variable `y` can hold values from `-2^31` to `2^31-1`, whereas variable `x` can hold values from `0` to `2^32-1`.
+
+---
+
+## Derived Data Types
+
+Data types that are derived from fundamental data types are derived types.
+
+example: arrays, pointers, function types, structures, etc.
