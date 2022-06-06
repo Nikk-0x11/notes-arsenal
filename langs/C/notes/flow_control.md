@@ -204,3 +204,334 @@ int main() {
     return 0;
 }
 ```
+
+---
+
+## Loops
+
+In programming, a loop is used to repeat a block of code until the specified condition is met.
+
+There are three types of loops in C
+
+- for loop
+- while loop
+- do...while loop
+
+#### for loop
+
+`for` loop syntax:
+
+```c
+for (initializationStatement; testExpression; updateStatement)
+{
+  // statements inside the body of a loop
+}
+```
+
+**working of for loop**
+
+- The initialization statement is executed only once.
+- Then, the test expression is evaluated. If the test expression is evaluated to false, the `for` loop is terminated.
+- However, if the test expression is evaluated to true, statements inside the body of the `for` loop are executed, and the update expression is updated.
+- Again the test expression is evaluated.
+
+This process goes on until the test expression is false. When the test expression is false, the loop terminates.
+
+**example**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int i;
+
+  for (i = 1; i < 11; ++i)
+  {
+    printf("%d\n", i);
+  }
+  return 0;
+}
+```
+
+#### while loop
+
+syntax for `while` loop
+
+```c
+while (testExpression)
+{
+  // the body of the loop
+}
+```
+
+**working of while loop**
+
+- The `while` loop evaluates the `testExpression` inside the parentheses `()`.
+- If `testExpression` is true, statements inside the body of `while` loop are executed. Then, `testExpression` is evaluated again.
+- The process goes on until `testExpression` is evaluated to false.
+- If `testExpression` is false, the loop terminates.
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int i = 1;
+
+  while (i <= 5)
+  {
+    printf("%d\n", i);
+    ++i;
+  }
+  return 0;
+}
+```
+
+#### do...while loop
+
+The `do...while` loop is similar to the `while` loop with one important difference. The body of `do...while` loop is executed at least once. Only then, the test expression is evaluated.
+
+The syntax of the `do...while` loop is
+
+```c
+do
+{
+  // the body of the loop
+}
+while (testExpression);
+```
+
+**working of do...while loop**
+
+- The body of `do...while` loop is executed once. Only then, then `testExpression` is evaluated.
+- If `testExpression` is true, the body of the loop is executed again and `testExpression` is evaluated once more.
+- This process goes on until `testExpression` becomes false.
+- If `testExpression` is false the loop ends.
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  double number, sum = 0;
+
+  do
+  {
+    printf("enter a number: ");
+    scanf("%lf", &number);
+    sum += number;
+  } while (number != 0.0);
+
+  printf("sum = %.2lf", sum);
+
+  return 0;
+}
+```
+
+---
+
+## break and continue
+
+#### break
+
+The break statement ends the loop immediately when it is encountered. Its syntax is:
+
+```c
+break;
+```
+
+The break statement is almost always used with if...else statement inside the loop.
+
+**example**
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  int i;
+  double number, sum = 0.0;
+
+  for (i = 1; i <= 10; ++i)
+  {
+    printf("Enter n%d: ", i);
+    scanf("%lf", &number);
+
+    // if the user enters a negative number, break the loop
+    if (number < 0.0)
+    {
+      break;
+    }
+
+    sum += number;
+  }
+
+  printf("Sum = %.2lf", sum);
+
+  return 0;
+}
+```
+
+#### continue
+
+The `continue` statement skips the current iteration of the loop and continues with the next iteration, it's syntax is:
+
+```c
+continue;
+```
+
+The `continue` statement is almost always used with the `if...else` statement
+
+**example**
+
+```c
+#include <stdio.h>
+int main()
+{
+  int i;
+  double number, sum = 0.0;
+
+  for (i = 1; i <= 10; ++i)
+  {
+    printf("Enter a n%d: ", i);
+    scanf("%lf", &number);
+
+    if (number < 0.0)
+    {
+      continue;
+    }
+
+    sum += number;
+  }
+
+  printf("Sum = %.2lf", sum);
+
+  return 0;
+}
+```
+
+---
+
+## switch statement
+
+The switch statement allows us to execute one code block among many alternatives.
+
+We can do the same think with the `if...else...if` ladder. However the syntax of the `switch` statement is much easier to read and write.
+
+```c
+switch (expression)
+{
+  case const1:
+  // statement
+    break;
+
+  case const2:
+  // statement
+    break;
+
+  case const3:
+  // statement
+    break;
+  .
+  .
+  .
+  default:
+    // default statements
+}
+```
+
+**note**
+
+- If we don't use the `break` statement, all statements after the matching label are also executed.
+- The `default` clause inside the `switch` statement is optional.
+
+**example**
+
+```c
+// simple calculator
+#include <stdio.h>
+
+int main()
+{
+  char operation;
+  double n1, n2;
+
+  printf("Enter an operator (+, -, *, /): ");
+  scanf("%c", &operation);
+  printf("Enter two operands: ");
+  scanf("%lf %lf", &n1, &n2);
+
+  switch (operation)
+  {
+  case '+':
+    printf("%.1lf + %.1lf = %.1lf", n1, n2, n1 + n2);
+    break;
+
+  case '-':
+    printf("%.1lf - %.1lf = %.1lf", n1, n2, n1 - n2);
+    break;
+
+  case '*':
+    printf("%.1lf * %.1lf = %.1lf", n1, n2, n1 * n2);
+    break;
+
+  case '/':
+    printf("%.1lf / %.1lf = %.1lf", n1, n2, n1 / n2);
+    break;
+
+  // operator doesn't match any case constant +, -, *, /
+  default:
+    printf("Error! operator is not correct");
+  }
+
+  return 0;
+}
+```
+
+---
+
+## goto statement
+
+The `goto` statement allows us to transfer control of the program to the specified `label`
+
+```
+goto label;
+... ... ...
+... ... ...
+label:
+statement;
+```
+
+The `label` is an identifier. When the `goto` statement is encountered, the control of the program jumps to `label:` and starts executing the code.
+
+```c
+#include <stdio.h>
+
+int main()
+{
+  const int maxInput = 100;
+  int i;
+  double number, average, sum = 0.0;
+
+  for (i = 1; i <= maxInput; ++i)
+  {
+    printf("%d. Enter a number: ", i);
+    scanf("%lf", &number);
+
+    // goto jump if the user enters a negative number
+    if (number < 0.0)
+    {
+      goto jump;
+    }
+    sum += number;
+  }
+
+jump:
+  average = sum / (i - 1);
+  printf("sum = %.2f\n", sum);
+  printf("average = %.2f\n", average);
+
+  return 0;
+}
+```
