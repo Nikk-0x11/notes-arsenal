@@ -304,7 +304,7 @@ Memory is not always available in abundance. While dealing with code/system whic
 
 ### Algorithm’s Efficiency Examples
 
-\***\*Example 1: Age Group Problem\*\***
+**Example 1: Age Group Problem**
 
 Problems like finding the people of a certain age group can easily be solved with a little modified version of the binary search algorithm (assuming that the data is sorted).
 
@@ -317,7 +317,7 @@ Suppose it takes 1 second to find all the people at a certain age for a group of
 
 The same binary search algorithm is used to find the square root of a number.
 
-\***\*Example 2: Rubik's Cube Problem\*\***
+**Example 2: Rubik's Cube Problem**
 
 Imagine you are writing a program to find the solution to a Rubik's cube.
 
