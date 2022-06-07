@@ -1,9 +1,9 @@
 #### Intro to DSA
 
-- [x] what is an algorithm?
-- [x] data structure and types
-- [x] why learn DSA
-- [x] asymptotic notations
+- [x] [what is an algorithm?](./intro_to_dsa/README.md#what-is-an-algorithm)
+- [x] [data structure and types](./intro_to_dsa/README.md#data-structure-and-types)
+- [x] [why learn DSA](./intro_to_dsa/README.md#why-dsa)
+- [x] [asymptotic notations](./intro_to_dsa/README.md#asymptotic-analysis)
 - [ ] master theorem
 - [ ] divide and conquer algorithm
 
