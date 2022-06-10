@@ -2,7 +2,9 @@
 
 ### Language
 
-- [ ] Theory
+**{ C++ }**
+
+- [x] Theory
 - [ ] Basic Questions
 - [ ] Logic Building\*
 

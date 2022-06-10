@@ -23,8 +23,8 @@
 - [x] check leap year
 - [x] find factorial
 - [x] generate multiplication table
-- [ ] display fibonacci series
-- [ ] find GCD (greatest common divisor)
+- [x] display fibonacci series
+- [x] find GCD (greatest common divisor)
 - [ ] find LCM (least common multiple)
 - [ ] reverse a number
 - [ ] calculate power of a number
@@ -39,8 +39,8 @@
 
 ### Functions
 
-- [ ] display prime numbers between two intervals using functions
-- [ ] check prime number by creating a function
+- [x] display prime numbers between two intervals using functions
+- [x] check prime number by creating a function
 - [ ] check whether a number can be express as sum of two prime numbers
 - [ ] find sum of natural numbers using recursion
 - [ ] calculate factorial of a number using recursion
