@@ -13,6 +13,7 @@
 - Binary Searching
 
 ### Advanced DSA Topics
+
 - Heaps (priority queue)
 - Disjoint Set Union
 - Segment Trees
