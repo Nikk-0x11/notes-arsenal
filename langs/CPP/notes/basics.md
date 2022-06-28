@@ -59,7 +59,7 @@ this specifies that `some_variable` is of type `int`; that is, `some_variable` i
 A declaration is a statement that introduces a name into the program. It specifies a type for the named entity:
 
 - A type defines a set of possible value and a set of operations for an object.
-- An object is some memory that holds a value of soem type.
+- An object is some memory that holds a value of some type.
 - A value is a set of bits interpreted according to a type.
 - A variable is a named object.
 
