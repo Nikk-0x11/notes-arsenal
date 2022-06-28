@@ -119,7 +119,7 @@ auto d = 1.2;     // a double
 auto z = sqrt(y); // z has the type of whatever sqrt(y) retruns
 ```
 
-With `auto` we use the `=` syntax because there is no type conversion involved that might cause problems. We ise `auto` when we don't have a specific reason to mention the type explicitly. "specific reasons" included:
+With `auto` we use the `=` syntax because there is no type conversion involved that might cause problems. We use `auto` when we don't have a specific reason to mention the type explicitly. "specific reasons" included:
 
 - The definition is in a large scope where we want to make the type clearly visible to reader of our code.
 - We want to be explicit about a variable's range or precision. example: `double` rather than `float`.
