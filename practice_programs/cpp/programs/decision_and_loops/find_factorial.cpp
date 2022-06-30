@@ -1,13 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int main()
+int factorial(int n)
 {
-  int n;
-  long double factorial = 1.0;
-
-  cout << "enter a +ive int: ";
-  cin >> n;
+  long double factorial = 1;
 
   if (n < 0)
     cout << "factorial of a negative number doesn't exist.";
@@ -19,6 +15,16 @@ int main()
     }
     cout << "factorial of " << n << " is " << factorial << endl;
   }
+}
+
+int main()
+{
+  int n;
+
+  cout << "enter a +ive int: ";
+  cin >> n;
+
+  factorial(n);
 
   return 0;
 }
