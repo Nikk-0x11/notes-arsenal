@@ -5,26 +5,26 @@
 struct Node
 {
 	int data;
-	struct Node* next;
+	struct Node *next;
 };
 
 // func to return new linked list node from the heap
-struct Node* newNode(int key)
+struct Node *newNode(int key)
 {
-	struct Node* node = (struct Node*)malloc(sizeof(struct Node));
-	node -> data = key;
-	node -> next = NULL;
+	struct Node *node = (struct Node *)malloc(sizeof(struct Node));
+	node->data = key;
+	node->next = NULL;
 
 	return node;
 }
 
 // func to print a given linked list
-void pl(struct Node* head)
+void pl(struct Node *head)
 {
-	struct Node* prt = head;
+	struct Node *ptr = head;
 	while (ptr)
 	{
-		printf("%d -> ", prt->data);
+		printf("%d -> ", ptr->data);
 		ptr = ptr->next;
 	}
 
@@ -32,10 +32,10 @@ void pl(struct Node* head)
 }
 
 // func to add a new node at the tail end of the list instead of its head
-stuct Node* aNode(struct Node** head, int key)
+struct Node *aNode(struct Node **head, int key)
 {
-	struct Node* current = *head;
-	struct Node* node = newNode(key);
+	struct Node *current = *head;
+	struct Node *node = newNode(key);
 
 	// case for len8
 	if (current == NULL)
@@ -50,7 +50,7 @@ stuct Node* aNode(struct Node** head, int key)
 			current = current->next;
 		}
 
-		current-> next = node;
+		current->next = node;
 	}
 }
 
@@ -58,16 +58,16 @@ int main(void)
 {
 	// inp keys
 	int keys[] = {1, 2, 3, 4, 5};
-	int n = sizeof(keys)/sizeof(keys[0]);
+	int n = sizeof(keys) / sizeof(keys[0]);
 
 	// point to head node of linked list
-	struct Node* head = NULL;
-	for (int i = 0; i<n; i++)
+	struct Node *head = NULL;
+	for (int i = 0; i < n; i++)
 	{
 		aNode(&head, keys[i]);
 	}
 
-	// prin linked list
+	// print linked list
 	pl(head);
 
 	return 0;
